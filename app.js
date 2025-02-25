@@ -36,9 +36,29 @@ function atualizarListaAmigos() {
 
 function sortearAmigo() {
     if (amigos.length < 2) {
-        alert('Erro: É necessário pelo menos dois amigos para realizar o sorteio')
+        alert('Erro: É necessário pelo menos dois amigos para realizar o sorteio');
         return;
     }
+
+    const indiceSorteado = Math.floor(Math.random() * amigos.length);
+    const amigoSorteado = amigos[indiceSorteado];
+
+    // Limpa a lista de amigos
+    const listaAmigos = document.getElementById('listaAmigos');
+    listaAmigos.innerHTML = '';
+
+    // Cria e adiciona novo elemento com o resultado
+    const resultado = document.createElement('p');
+    resultado.id = 'resultadoSorteio';
+    resultado.textContent = `Amigo sorteado: ${amigoSorteado}`;
+    resultado.classList.add('resultado-sorteio'); // Adiciona uma classe para estilização
+
+    // Adiciona o resultado acima do botão de sorteio
+    const buttonContainer = document.querySelector('.button-container');
+    buttonContainer.parentNode.insertBefore(resultado, buttonContainer);
 }
+
+
+
 
 
